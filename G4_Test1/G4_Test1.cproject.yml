@@ -1,0 +1,28 @@
+# A project translates into one executable or library.
+project:
+
+  groups:
+    - group: Source Files
+      files:
+        - file: ./main.c
+
+    - group: Device
+      files:
+        - file: ./Device/system_stm32g4xx.c
+        - file: ./Device/startup_stm32g431xx.s
+
+  # List components to use for your application.
+  components:
+    - component: ARM::CMSIS:CORE
+
+  # Explicit linker script.
+  linker:
+    - script: ./Device/G4_Test1.sct
+      for-compiler: AC6
+
+  # List executable file formats to be generated.
+  output:
+    type:
+      - elf
+      - hex
+      - map
